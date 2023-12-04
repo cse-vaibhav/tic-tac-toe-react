@@ -20,7 +20,7 @@ export default function Cell({ index }: { index: number }) {
     setCurrBoard(currBoard + 1);
 
     // check for a winner
-    const res = checkWinner(board);
+    const res = checkWinner(board, turn);
     if (res) {
       setWinner(turn);
       return;

@@ -1,12 +1,27 @@
-import ReactFlow from "reactflow"
+import { useAtomValue } from "jotai";
+import { currBoardAtom, historyAtom, turnAtom } from "../lib/store";
+import { memo, useMemo } from "react";
 
-import "reactflow/dist/style.css"
+import Grid from "./Grid";
 
-export default function PossibleOutcomes() {
-  return (
-    <div className="possible-outcomes">
-      <h2>Possible Outcomes</h2>
-      <ReactFlow nodes={[]} edges={[]} />
-    </div>
-  )
+import { findAllSolutions } from "../lib/utils";
+
+function PossibleOutcomes({ hidden }: { hidden?: boolean }) {
+	const history = useAtomValue(historyAtom);
+	const currBoard = useAtomValue(currBoardAtom);
+	const turn = useAtomValue(turnAtom);
+
+	const solutions = useMemo(() => {
+		return findAllSolutions(history[currBoard], [], turn, 5).slice(0, 6);
+	}, [history, currBoard]);
+
+	return (
+		<div className="board">
+			{solutions.map((sol, k) => (
+				<Grid key={k} board={sol} />
+			))}
+		</div>
+	);
 }
+
+export default memo(PossibleOutcomes);
