@@ -25,25 +25,6 @@ export function checkWinner(board: string[], player: string) {
   return false
 }
 
-function is_full(board: string[]) {
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] === "") {
-      return false
-    }
-  }
-  return true
-}
-
-function get_empty_cells(board: string[]) {
-  const empty_cells = []
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] === "") {
-      empty_cells.push(i)
-    }
-  }
-  return empty_cells
-}
-
 export function findAllSolutions(board: string[], solutions: string[][], player: string) {
   // Base case: if the game is over, add the board to the solutions
   if (checkWinner(board, player)) {
