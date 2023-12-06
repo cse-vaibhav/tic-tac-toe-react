@@ -1,6 +1,6 @@
 
-import { currBoardAtom, historyAtom } from "../lib/store"
 import { useAtom, useAtomValue } from "jotai"
+import { currBoardAtom, historyAtom } from "../lib/store"
 
 export default function CycleHistory() {
 
@@ -9,13 +9,13 @@ export default function CycleHistory() {
 
   return (
     history.length == 1
-    ? "No History"
-    : (
-      <ul className="history-cycle">
-        <li><button disabled={currBoard === 0} onClick={() => setCurrBoard(currBoard - 1)}>Previous</button></li>
-        <li>Cycle througth History</li>
-        <li><button disabled={currBoard === history.length - 1} onClick={() => setCurrBoard(currBoard + 1)}>Next</button></li>
-      </ul>
-    )
+      ? "No History"
+      : (
+        <ul className="history-cycle">
+          <li><button disabled={currBoard === 0} onClick={() => setCurrBoard(currBoard - 1)}>Previous</button></li>
+          <li>Cycle througth History</li>
+          <li><button disabled={currBoard === history.length - 1} onClick={() => setCurrBoard(currBoard + 1)}>Next</button></li>
+        </ul>
+      )
   )
-  }
+}

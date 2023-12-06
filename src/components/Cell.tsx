@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { currBoardAtom, turnAtom, historyAtom, winnerAtom } from "../lib/store";
+import { currBoardAtom, historyAtom, turnAtom, winnerAtom } from "../lib/store";
 import { checkWinner } from "../lib/utils";
 
 export default function Cell({ index }: { index: number }) {
