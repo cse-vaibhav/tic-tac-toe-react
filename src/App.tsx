@@ -47,7 +47,7 @@ function App() {
       <Board />
       {showHistory && <CycleHistory />}
 
-      {history.length > 1 && <PossibleOutcomes />}
+      {showHistory && history.length > 1 && <PossibleOutcomes />}
     </div>
   );
 }
